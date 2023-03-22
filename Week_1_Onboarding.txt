@@ -1,0 +1,1 @@
+The first week in the Bytewise Fellowship was our onboarding week. In this week were introduce to our Flutter mentor, Humair Shoukat. We were also guided about the fellowship program, about it’s different tracks, and we were also guided how to submit our assigned tasks. In the first week we have also received an intro on flutter and on git/github from our mentor.  
