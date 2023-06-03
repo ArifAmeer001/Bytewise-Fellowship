@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'mobile_chat.dart';
 import '../colors.dart';
 import '../info.dart';
 
@@ -17,7 +17,13 @@ class ContactList extends StatelessWidget {
           return Column(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const MobileChatScreen()
+                      )
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Column(
