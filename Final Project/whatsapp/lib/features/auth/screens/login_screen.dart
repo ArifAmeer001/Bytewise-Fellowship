@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_app/colors.dart';
 import 'package:whatsapp_app/common/widgets/custom_button.dart';
@@ -12,11 +13,22 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final phoneController = TextEditingController();
+  Country? country;
 
   @override
   void dispose() {
     super.dispose();
     phoneController.dispose();
+  }
+  
+  void countryPicker(){
+    showCountryPicker(
+        context: context,
+        onSelect: (Country _country){
+          setState(() {
+            country = _country;
+          });
+    });
   }
 
   @override
@@ -37,13 +49,14 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text('WhatsApp will need to verify your phone number'),
             const SizedBox(height: 10),
             TextButton(
-              onPressed: () {},
+              onPressed: countryPicker,
               child: const Text('Pick Country'),
             ),
             const SizedBox(height: 5),
             Row(
               children: [
-                const Text('+92'),
+                if(country != null)
+                   Text('+${country!.phoneCode}'),
                 const SizedBox(width: 10),
                 SizedBox(
                   width: size.width*0.7,
