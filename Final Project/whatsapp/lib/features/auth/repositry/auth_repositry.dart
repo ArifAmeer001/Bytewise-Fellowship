@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:whatsapp_app/common/utils/utils.dart';
 import 'package:whatsapp_app/features/auth/screens/otp_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_app/features/auth/screens/user_information_screen.dart';
 
 final authRepositryProvider = Provider(
         (ref) => AuthRepositry(
@@ -42,6 +44,42 @@ class AuthRepositry {
     }
     on FirebaseAuthException catch (e){
       showSnackBar(context: context, content: e.message!);
+    }
+  }
+
+  void verifyOTP({
+    required BuildContext context,
+    required String verificationId,
+    required String userOTP,
+  }) async{
+    try{
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId,
+          smsCode: userOTP
+      );
+      await auth.signInWithCredential(credential);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        UserInformationScreen.routeName,
+          (routr) => false,
+      );
+    }
+    on FirebaseAuthException catch (e){
+      showSnackBar(context: context, content: e.message!);
+    }
+  }
+
+  void userDataToFireBase({
+    required String name,
+    required File? profilePic,
+    required ProviderRef ref,
+    required BuildContext context,
+}) async{
+    try{
+      
+    }
+    catch (e) {
+      showSnackBar(context: context, content: e.toString());
     }
   }
 }
