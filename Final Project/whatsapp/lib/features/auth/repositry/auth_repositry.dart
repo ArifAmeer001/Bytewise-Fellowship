@@ -25,6 +25,15 @@ class AuthRepositry {
     required this.firestore
   });
 
+  Future<UserModel?> getCurrentUserData() async{
+    var userData = await firestore.collection('users').doc(auth.currentUser?.uid).get();
+
+    UserModel? user;
+    if(userData.data() != null){
+      user = UserModel.fromMap(userData.data()!);
+    }
+  }
+
   void signInWithPhone(BuildContext context, String phoneNumber) async{
     try{
       await auth.verifyPhoneNumber(
@@ -94,7 +103,7 @@ class AuthRepositry {
           profilePic: photoUrl,
           uid: uid,
           isOnline: true,
-          phoneNumber: auth.currentUser!.uid,
+          phoneNumber: auth.currentUser!.phoneNumber.toString(),
           groupId: []
       );
 
