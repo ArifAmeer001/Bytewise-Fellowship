@@ -32,6 +32,7 @@ class AuthRepositry {
     if(userData.data() != null){
       user = UserModel.fromMap(userData.data()!);
     }
+    return user;
   }
 
   void signInWithPhone(BuildContext context, String phoneNumber) async{
@@ -119,5 +120,13 @@ class AuthRepositry {
     catch (e) {
       showSnackBar(context: context, content: e.toString());
     }
+  }
+
+  Stream<UserModel> userData(String userId){
+    return firestore.collection('users').doc(userId).snapshots().map(
+            (event) => UserModel.fromMap(
+              event.data()!
+            )
+    );
   }
 }
