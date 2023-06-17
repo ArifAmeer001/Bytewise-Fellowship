@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_app/common/widgets/error.dart';
 import 'package:whatsapp_app/features/auth/screens/login_screen.dart';
 import 'package:whatsapp_app/features/auth/screens/user_information_screen.dart';
-import 'package:whatsapp_app/widgets/mobile_chat.dart';
+import 'package:whatsapp_app/features/chat/screens/mobile_chat.dart';
 
 import 'features/auth/screens/otp_screen.dart';
 import 'features/select_contacts/screens/select_contacts_screens.dart';

@@ -42,7 +42,7 @@ const info = [
     'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
   },
   {
-    'name': 'Albert Dera',
+    'name': 'Arif',
     'message': 'Am I fat?',
     'time': '7:25 am',
     'profilePic':

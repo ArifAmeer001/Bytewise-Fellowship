@@ -5,13 +5,13 @@ import 'package:whatsapp_app/features/select_contacts/repositry/select_contacts_
 
 final getContactProvider = FutureProvider(
         (ref) {
-          final selectContactRepositry = ref.watch(selectContactRepositryProvider);
+          final selectContactRepositry = ref.watch(selectContactsRepositoryProvider);
           return selectContactRepositry.getContacts();
         }
 );
 
 final selectContactControllerprovider = Provider((ref) {
-  final selectContactRepositry = ref.watch(selectContactRepositryProvider);
+  final selectContactRepositry = ref.watch(selectContactsRepositoryProvider);
   return SelectContactController(
     ref:  ref,
     selectContactRepositry: selectContactRepositry,
@@ -20,7 +20,7 @@ final selectContactControllerprovider = Provider((ref) {
 
 class SelectContactController{
   final ProviderRef ref;
-  final SelectContactRepositry selectContactRepositry;
+  final SelectContactRepository selectContactRepositry;
 
   SelectContactController({
     required this.ref,
